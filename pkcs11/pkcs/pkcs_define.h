@@ -10,6 +10,10 @@ typedef CK_BYTE CK_BBOOL;
 typedef uint32_t CK_FLAGS;
 typedef char CK_UTF8CHAR;
 typedef CK_UTF8CHAR CK_CHAR;
+#define CKF_TRUE     1
+#define CKF_FALSE    0
+
+
 
 #define PKCS_VERSION_MAJOR      0x02
 #define PKCS_VERSION_MINOR      0x01

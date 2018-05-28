@@ -17,6 +17,8 @@
 #define TRANS_OK						0x00000000
 #define TRANS_ERROR_NO_DEVICE			0x00000001
 
+
+
 #define TRANS_USB_MSD					0x00000000
 #define TRANS_USB_CCID					0x00000001
 #define TRANS_USB_CUSTOM				0x00000002
@@ -30,7 +32,15 @@ typedef uint32_t TR_RV;
 typedef uint8_t	TR_BYTE;
 typedef TR_BYTE* TR_BYTE_PTR;
 typedef uint32_t TR_ULONG;
+typedef TR_ULONG* TR_ULONG_PTR;
 typedef uint32_t TR_FLAGS;
+
+
+typedef struct Device_Detected{
+    char* Device_Name;
+    struct Device_Detected* Next;
+
+}Device_Detected_t;
 
 uint32_t set_trans_init(TR_FLAGS Trans_Way);
 uint32_t set_trans_config(TR_BYTE_PTR pData,TR_ULONG pDataLen);
@@ -41,7 +51,6 @@ void print_trans_info();
 
 TR_RV Trans_Date_W(TR_BYTE_PTR pData, TR_ULONG pDataLen);
 TR_RV Trans_Date_R(TR_BYTE_PTR pData, TR_ULONG pDataLen);
-
 
 
 

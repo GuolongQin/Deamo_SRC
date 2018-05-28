@@ -23,7 +23,7 @@ uint32_t layer_security_init(CK_NOTIFY *arg_notify) {
     if(arg_notify!=NULL){
         notify = arg_notify;
     }
-    if (Init_TransLayer()) {//Error Occured
+    if (Init_TransLayer()!=0) {//Error Occured
         if(notify!=NULL)
         notify(NULL,CKR_EVENT_ERROR,"Init_TransLayer Failed\n");
         return 1;

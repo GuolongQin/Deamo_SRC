@@ -1,5 +1,6 @@
 #ifndef _PKCS_H_
 #define _PKCS_H_
+#include <pthread.h>
 #include "pkcs_define.h"
 #include "stddef.h"
 
@@ -340,8 +341,11 @@ typedef struct P11_Session{
 
 }P11_Session_t;
 
-
+#define Cache_Label_Count   64
+#define Cache_Bytes_Count   1024
 typedef struct P11_Context{
+
+    uint8_t  label[Cache_Label_Count];
     CK_BBOOL inited;
     CK_BBOOL permission;
     CK_ULONG slot_count;
@@ -349,7 +353,21 @@ typedef struct P11_Context{
     CK_ULONG session_count;
     P11_Session_t sessions[MAX_SESSION_COUNT];
 
+    //Mutex Function
+    CK_CREATEMUTEX CreateMutex;
+    CK_DESTROYMUTEX DestroyMutex;
+    CK_LOCKMUTEX LockMutex;
+    CK_UNLOCKMUTEX UnlockMutex;
+    CK_FLAGS flags;
+    CK_VOID_PTR reserve;
+    pthread_mutex_t *mutex;
 }P11_Context_Info;
+
+P11_Context_Info p11_t;
+
+CK_RV Create_Mutex_local(void* arg);
+
+
 
 
 #endif // !_PKCS_H_

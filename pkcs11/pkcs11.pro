@@ -13,7 +13,9 @@ SOURCES += main.c \
     pkcs/p11_store.c \
     pkcs/p11_session_management.c \
     pkcs/p11_object_function.c \
-    pkcs/p11_crypto_function.c
+    pkcs/p11_crypto_function.c \
+    pkcs/pkcs_apdu.c \
+    pkcs/pkcs.c
 
 HEADERS += \
     layer_application.h \
@@ -26,5 +28,6 @@ HEADERS += \
     pkcs/p11_store.h \
     pkcs/p11_session_management.h \
     pkcs/p11_object_function.h \
-    pkcs/p11_crypto_function.h
+    pkcs/p11_crypto_function.h \
+    pkcs/pkcs_apdu.h
 
